@@ -1,0 +1,79 @@
+        <!-- PAGE CONTAINER-->
+      
+            <!-- MAIN CONTENT-->
+      
+<div class="row">
+ <!-- END MAIN CONTENT-->
+   <div class="col-md-12">
+         {{#if flashMessage}}
+            <div class="{{flashMessage.type}}">{{flashMessage.message}}</div>
+        {{/if}}
+   </div>    
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Normal</strong> Form
+        </div>
+        <form action="/admin/category" method="post">
+        <div class="card-body card-block">
+            
+                <div class="form-group">
+                    <label for="nf-email" class=" form-control-label">Add Category</label>
+                    <input type="text" id="category" name="category" placeholder="Enter Category.." class="form-control">
+              
+                </div>
+               
+            
+        </div>
+        <div class="card-footer">
+            <button type="submit" id="add" class="btn btn-primary btn-sm">
+                <i class="fa fa-dot-circle-o"></i> Submit
+            </button>
+           
+        </div>
+
+        </form>
+    </div>
+</div>
+<div class="col-md-6">
+    <!-- TOP CAMPAIGN-->
+    <div class="top-campaign">
+        <h3 class="title-3 m-b-30">Categories</h3>
+      
+        <div class="table-responsive">
+            <table class="table table-top-campaign">
+                <tbody>
+                                                                                       
+                    {{#each categories}}
+                    <tr>
+                    <td>{{category}}</td>
+                    <td id="4">
+                     
+                            <form action="/admin/category/{{_id}}?_method=DELETE" method="post">
+                              <input type="hidden" name="_method" value="DELETE">
+
+                                <button type="submit" class="btn btn-danger delete">Delete</button>
+                            </form>
+                        </td>
+                      
+                    </tr>
+                    {{/each}}
+                                    </tbody>
+            </table>
+        </div>
+    </div>
+    <!--  END TOP CAMPAIGN-->
+</div>
+
+
+
+
+
+<div class="copyright">
+    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+</div>
+</div>
+                     
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+   

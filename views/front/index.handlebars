@@ -1,0 +1,86 @@
+
+
+    <!-- banner post start-->
+    <section class="banner_post">
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                {{#each featured}}
+                <div class="banner_post_1 banner_post_bg_1"
+                style='
+                  background-image: url("{{img}}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+                '
+                
+                >
+                    <div class="banner_post_iner text-center">
+                        <a href="/category/{{category.slug}}"><h5> {{category.category}}</h5></a> 
+                        <a href="/post/{{slug}}"><h2> {{title}}  </h2></a> 
+                        <p>{{generateDate date 'MMM DD YYYY'}}</p>
+                    </div>
+                </div>
+            {{/each}}
+
+            </div>
+        </div>
+    </section>
+    <!-- banner post end-->
+
+    <!-- feature_post start-->
+    <section class="all_post section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        {{#each first}}
+                        <div class="col-lg-12">
+                            <div class="single_post post_1 feature_post">
+                                <div class="single_post_img">
+                                    <img src="{{img}}" alt="">
+                                </div>
+                                <div class="single_post_text text-center">
+                                    <a href="/category/{{category.slug}}"><h5> {{category.slug}}</h5></a> 
+                                    <a href="/post/{{slug}}"><h2>{{title}} </h2></a> 
+                                    <p>{{date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{#each posts}}
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="single_post post_1">
+                                <div class="single_post_img">
+                                    <img src="{{img}}" alt="">
+                                </div>
+                                <div class="single_post_text text-center">
+                                    <a href="/category/{{category.slug}}"><h5> {{category.category}}</h5></a> 
+                                    <a href="/post/{{slug}}"><h2>{{title}}</h2></a> 
+                                    <p>{{title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    </div>
+                    <div class="page_pageniation">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                {{#paginate current=current pages=pages}}
+{{/paginate}}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar_widget">
+                       
+                      {{>category-nav}}
+                       
+                        
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- feature_post end-->

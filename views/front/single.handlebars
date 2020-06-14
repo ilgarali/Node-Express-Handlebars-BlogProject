@@ -1,0 +1,153 @@
+
+  {{#if flashMessage}}
+            <div class="{{flashMessage.type}} text-center">{{flashMessage.message}}</div>
+        {{/if}}
+   <!--================Blog Area =================-->
+   <section class="blog_area single-post-area all_post section_padding">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 posts-list">
+               <div class="single-post">
+                  <div class="feature-img">
+                     <img class="img-fluid" src="{{post.img}}" alt="">
+                  </div>
+                  <div class="blog_details">
+                     <h2>{{post.title}}
+                     </h2>
+                     <ul class="blog-info-link mt-3 mb-4">
+                        <li><a href="{{slug}}"><i class="far fa-user"></i> {{post.category.category}}</a></li>
+                     
+                         <li><a href="#"><i class="far fa-comments"></i> {{post.user.username}}</a></li>
+                     </ul>
+                     <p class="excert">
+                        {{post.content}}
+                     </p>
+                   
+                  </div>
+               </div>
+               <div class="navigation-top">
+                  <div class="d-sm-flex justify-content-between text-center">
+                 
+                    
+                     <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                     </ul>
+                  </div>
+                  <div class="navigation-area">
+                     <div class="row">
+                        {{#each prev}}
+                        <div
+                           class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                           <div class="thumb" style="width: 50%;">
+                              <a href="/post/{{slug}}">
+                                 <img class="img-fluid"  src="{{img}}" alt="">
+                              </a>
+                           </div>
+                           <div class="arrow">
+                              <a href="/post/{{slug}}">
+                                 <span class="text-white ti-arrow-left"></span>
+                              </a>
+                           </div>
+                           <div class="detials">
+                              <p>Prev Post</p>
+                              <a href="/post/{{slug}}">
+                                 <h4>{{title}}</h4>
+                              </a>
+                           </div>
+                        </div>
+                        {{/each}}
+                    {{#each next}}
+                        <div
+                           class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                           <div class="detials">
+                              <p>Next Post</p>
+                              <a href="/post/{{slug}}">
+                                 <h4>{{title}}</h4>
+                              </a>
+                           </div>
+                           <div class="arrow">
+                              <a href="/post/{{slug}}">
+                                 <span class="text-white ti-arrow-right"></span>
+                              </a>
+                           </div>
+                           <div class="thumb" style="width: 50%;">
+                              <a href="/post/{{slug}}">
+                                 <img class="img-fluid" src="{{img}}" alt="">
+                              </a>
+                           </div>
+                        </div>
+                         {{/each}}
+                     </div>
+                  </div>
+               </div>
+              
+               <div class="comments-area">
+                  {{#each comments}}
+                  <div class="comment-list">
+                     <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                          
+                           <div class="desc">
+                              <p class="comment">
+                                 {{comment}}
+                              </p>
+                              <div class="d-flex justify-content-between">
+                                 <div class="d-flex align-items-center">
+                                    <h5>
+                                       <a href="#">{{username}}</a>
+                                    </h5>
+                                    <p class="date">{{generateDate date 'MMM DD YYYY'}}</p>
+                                 </div>
+                                
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                {{/each}}
+               </div>
+               <div class="comment-form">
+                  <h4>Leave a Reply</h4>
+                  <form class="form-contact comment_form" action="/comment" method="POST" id="commentForm">
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                 placeholder="Write Comment"></textarea>
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <input type="hidden" name="post" value="{{post._id}}">
+                              <input class="form-control" name="username" id="name" type="text" placeholder="Name">
+                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                           <div class="form-group">
+                              <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                           </div>
+                        </div>
+                    
+                     </div>
+                     <div class="load_btn">
+                        <button type="submit" class="btn_1">SUBMIT </button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="col-lg-4">
+                  <div class="sidebar_widget">
+                    
+                             {{>category-nav}}
+                      
+                        
+                   
+                  </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--================Blog Area end =================-->

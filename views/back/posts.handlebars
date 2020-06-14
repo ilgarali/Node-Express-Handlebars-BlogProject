@@ -1,0 +1,68 @@
+<div class="row">
+                       
+                           
+            <!-- END MAIN CONTENT-->
+ <div class="col-md-12">
+         {{#if flashMessage}}
+            <div class="{{flashMessage.type}}">{{flashMessage.message}}</div>
+        {{/if}}
+   </div>         
+<div class="table-responsive table-responsive-data2">
+<a href="/admin/post/new" class="au-btn au-btn-icon au-btn--blue">
+<i class="zmdi zmdi-plus"></i>add post</a>
+<table class="table table-data2">
+<thead>
+<tr>
+    
+    <th>Title</th>
+    <th>image</th>
+    <th>description</th>
+    <th>category</th>
+
+    
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+           {{#each posts}} 
+    
+<tr class="tr-shadow">
+    
+    <td> {{title}}</td>
+    <td>
+    <img src="{{img}}" class="img-fluid" alt="{{slug}}">
+    </td>
+<td class="desc"> {{truncate content}} </td>
+    <td> {{category.category}} </td>
+
+    
+    <td>
+        <div class="table-data-feature">
+            
+        <a href="/admin/post/edit/{{_id}}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                <i class="zmdi zmdi-edit"></i>
+            </a>
+        <form action="/admin/post/{{_id}}?_method=DELETE" method="POST">
+     
+                     <input type="hidden" name="_method" value="DELETE">             
+       <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                <i class="zmdi zmdi-delete"></i>
+            </button>
+        </form>
+            
+            
+        </div>
+    </td>
+</tr>
+<tr class="spacer"></tr>
+{{/each}}
+
+
+</tbody>
+</table>
+</div>
+
+<ul class="pagination justify-content-center">
+{{#paginate current=current pages=pages}}
+{{/paginate}}
+</ul>

@@ -1,0 +1,62 @@
+ <div class="col-md-12">
+         {{#if flashMessage}}
+            <div class="{{flashMessage.type}}">{{flashMessage.message}}</div>
+        {{/if}}
+   </div>   
+
+<div class="row m-t-30">
+    <div class="col-md-12">
+        <!-- DATA TABLE-->
+        <div class="table-responsive m-b-40">
+            <table class="table table-borderless table-data3">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Comment</th>
+                        <th>Post Title</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each comments}}
+                    <tr>
+                        <td>{{username}}</td>
+                        <td>{{comment}}</td>
+                        <td><a href="/post/{{post.slug}}" target="_blank">{{post.title}}</a></td>
+                        {{#if accepted}}
+                        <td class="process">
+                            <form action="/admin/comment/{{_id}}?_method=PUT" method="POST">
+                            <input type="hidden" name="_method" value="PUT">
+                          
+                            <input type="hidden" name="accepted" value="0">
+                                <button type="submit" class="btn btn-warning">Reject</button>
+                            </form>
+                        </td>
+                     
+                          {{else}}
+                        <td class="process">
+                              <form action="/admin/comment/{{_id}}?_method=PUT" method="post">
+                                  <input type="hidden" name="_method" value="PUT">
+                                <input type="hidden" name="accepted" value="1">
+                                <button class="btn btn-primary">Accept</button>
+                            </form>
+                       </td>
+                           {{/if}}
+
+
+
+                        <td>
+                            <form action="/admin/comment/delete/{{_id}}?_method=DELETE" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <!-- END DATA TABLE-->
+    </div>
+</div>

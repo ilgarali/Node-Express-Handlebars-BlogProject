@@ -1,0 +1,40 @@
+<div class="single_sidebar_wiget search_form_widget">
+    <form action="/search" method="GET">
+        <div class="form-group">
+            <input type="text" name="look" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Search Keyword'">
+            <button type="submit" class="btn_1">search</button>
+        </div>
+    </form>
+</div>
+<div class="single_sidebar_wiget">
+    <div class="sidebar_tittle">
+        <h3>Categories</h3>
+    </div>
+    <div class="single_catagory_item category">
+        <ul class="list-unstyled">
+            {{#each categories}}
+            <li><a href="/category/{{slug}}">{{category}}</a> <span>({{num_of_posts}})</span> </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+<div class="single_sidebar_wiget">
+    <div class="sidebar_tittle">
+        <h3>Popular Feeds</h3>
+    </div>
+    {{#each randoms}}
+    <div class="single_catagory_post post_2 ">
+        <div class="category_post_img">
+            <img src="{{img}}" alt="">
+        </div>
+        <div class="post_text_1 pr_30">
+            <a href="/post/{{slug}}">
+                <h3>{{title}}</h3>
+            </a>
+            <p><span> {{user.username}}</span> / {{generateDate date 'MMM DD YYYY'}}</p>
+        </div>
+    </div>
+    {{/each}}
+</div>

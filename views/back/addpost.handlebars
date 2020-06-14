@@ -1,0 +1,46 @@
+<div class="row">
+
+<div class="col-md-12">
+    <div class="card-body">
+
+        <form class="forms-sample" enctype="multipart/form-data" method="POST" action="/admin/post/create">
+           
+            <div class="form-group">
+              <label for="exampleInputName1">Title</label>
+              <input name="title" type="text" class="form-control" id="exampleInputName1" placeholder="Title">
+            </div>
+            
+            
+              <div class="form-group">
+              <label for="exampleInputName1">Select Category</label>
+              <select  class="form-control" name="category" >
+                  {{#each categories}}
+                  <option value="{{_id}}">{{category}}</option>
+                  {{/each}}
+              </select>
+            </div>
+
+              <div class="form-group">
+              <label for="exampleInputName1">Make Featured</label>
+              <select class="form-control" name="featured" >
+                <option value="1">Fetaured</option>
+                <option value="0">Not In featured</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputName1">Upload Image</label>
+              <input name="img" type="file" class="form-control" id="exampleInputName1">
+            </div>
+  
+           
+            <div class="form-group">
+              <label for="exampleTextarea1">Textarea</label>
+              <textarea name="content" class="form-control" id="exampleTextarea1" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+           
+          </form>
+        </div>
+</div>
+
